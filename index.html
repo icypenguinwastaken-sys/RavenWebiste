@@ -88,7 +88,18 @@
 
     /* HERO */
     .hero { min-height: 100vh; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 0 80px; overflow: hidden; }
-    .hero-img { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80&auto=format&fit=crop') center/cover no-repeat; }
+    .hero-slides { position: absolute; inset: 0; }
+    .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.4s ease-in-out; }
+    .hero-slide.active { opacity: 1; }
+    .hero-slide:nth-child(1) { background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80&auto=format&fit=crop'); }
+    .hero-slide:nth-child(2) { background-image: url('https://images.unsplash.com/photo-1581094651181-35942459ef62?w=1600&q=80&auto=format&fit=crop'); }
+    .hero-slide:nth-child(3) { background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80&auto=format&fit=crop'); }
+    .hero-slide:nth-child(4) { background-image: url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1600&q=80&auto=format&fit=crop'); }
+    .hero-slide:nth-child(5) { background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=80&auto=format&fit=crop'); }
+    .hero-dots { position: absolute; bottom: 36px; left: 48px; display: flex; gap: 8px; z-index: 2; opacity: 0; animation: fadeUp 1s 1.3s forwards; }
+    .hero-dot { width: 24px; height: 2px; background: rgba(255,255,255,0.25); border: none; cursor: pointer; transition: background 0.3s, width 0.3s; padding: 0; }
+    .hero-dot.active { background: var(--accent); width: 40px; }
+    @media (max-width: 768px) { .hero-dots { left: 24px; bottom: 24px; } }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,8,8,0.97) 0%, rgba(8,8,8,0.6) 50%, rgba(8,8,8,0.25) 100%); }
     .hero-content { position: relative; z-index: 1; padding: 0 48px; max-width: 960px; }
     .hero-eyebrow { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.8s 0.3s forwards; }
@@ -285,16 +296,29 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-img"></div>
+  <div class="hero-slides">
+    <div class="hero-slide active"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+  </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Web Design for Contractors · Est. 2024</p>
+    <p class="hero-eyebrow">Web Design for Contractors</p>
     <h1 class="hero-title">Your business<br>deserves a site<br>that <em>works.</em></h1>
     <p class="hero-sub">RavenWebCreation builds sleek, professional websites for contractors and tradespeople. Get found. Get hired.</p>
     <div class="hero-btns">
       <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Free Quote</button>
       <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">See What We Offer</button>
     </div>
+  </div>
+  <div class="hero-dots" id="heroDots">
+    <button class="hero-dot active" onclick="goToSlide(0)"></button>
+    <button class="hero-dot" onclick="goToSlide(1)"></button>
+    <button class="hero-dot" onclick="goToSlide(2)"></button>
+    <button class="hero-dot" onclick="goToSlide(3)"></button>
+    <button class="hero-dot" onclick="goToSlide(4)"></button>
   </div>
   <div class="hero-scroll">
     <span class="scroll-lbl">Scroll</span>
@@ -543,3 +567,30 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.svc, .ps, .stat, .sc').forEach((el, i) => {
     el.dataset.i = i % 5;
+     obs.observe(el);
+  });
+
+  // Hero slideshow
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  let current = 0;
+  let timer;
+
+  function goToSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    clearInterval(timer);
+    timer = setInterval(nextSlide, 5000);
+  }
+
+  function nextSlide() {
+    goToSlide((current + 1) % slides.length);
+  }
+
+  timer = setInterval(nextSlide, 5000);
+</script>
+</body>
+</html>
