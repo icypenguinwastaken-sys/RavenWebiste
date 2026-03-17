@@ -3,7 +3,46 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RavenWebCreation — Websites for Contractors</title>
+
+  <!-- Primary SEO -->
+  <title>RavenWebCreation | Professional Websites for Contractors & Trades</title>
+  <meta name="description" content="RavenWebCreation builds fast, mobile-friendly websites for contractors, builders, plumbers, electricians, and tradespeople. Get found on Google and win more clients. Free quote — Sales@RavenWebCreation.com"/>
+  <meta name="keywords" content="contractor website design, websites for contractors, plumber website, electrician website, construction website, trades website design, contractor web design, local contractor SEO, small business website, RavenWebCreation"/>
+  <meta name="author" content="RavenWebCreation"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://www.ravenwebcreation.com/"/>
+
+  <!-- Open Graph (Facebook, LinkedIn previews) -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.ravenwebcreation.com/"/>
+  <meta property="og:title" content="RavenWebCreation | Professional Websites for Contractors"/>
+  <meta property="og:description" content="We build sleek, fast, mobile-first websites for contractors and tradespeople. Get found on Google and turn visitors into clients."/>
+  <meta property="og:image" content="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80&auto=format&fit=crop"/>
+  <meta property="og:site_name" content="RavenWebCreation"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:url" content="https://www.ravenwebcreation.com/"/>
+  <meta name="twitter:title" content="RavenWebCreation | Websites for Contractors"/>
+  <meta name="twitter:description" content="We build sleek, fast, mobile-first websites for contractors and tradespeople. Get found on Google and turn visitors into clients."/>
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80&auto=format&fit=crop"/>
+
+  <!-- Schema.org Structured Data (helps Google understand your business) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "RavenWebCreation",
+    "url": "https://www.ravenwebcreation.com",
+    "email": "Sales@RavenWebCreation.com",
+    "description": "RavenWebCreation builds professional, mobile-first websites for contractors, builders, plumbers, electricians, and tradespeople.",
+    "priceRange": "$$",
+    "serviceType": ["Web Design", "Web Development", "SEO", "Brand Identity", "Contractor Websites"],
+    "areaServed": "United States",
+    "sameAs": []
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -469,7 +508,7 @@
     <p class="cta-sub">Send us a message and we'll get back to you within 24 hours. Free quote, no commitments — just a conversation about your business.</p>
     <button class="btn-primary" style="font-size:15px;padding:17px 48px;" onclick="window.location='mailto:Sales@RavenWebCreation.com'">Get a Free Quote</button>
     <br>
-    <a href="mailto:Sales@RavenWebCreation.com" class="cta-email">Sales@RavenWebCreation.com</a>
+    <a href="/cdn-cgi/l/email-protection#f2a1939e9781b2a09384979ca59790b1809793869b9d9cdc919d9f" class="cta-email"><span class="__cf_email__" data-cfemail="2073414c455360724156454e7745426352454154494f4e0e434f4d">[email&#160;protected]</span></a>
   </div>
 </section>
 
@@ -484,7 +523,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Nav shrink on scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
@@ -504,14 +543,3 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.svc, .ps, .stat, .sc').forEach((el, i) => {
     el.dataset.i = i % 5;
-    obs.observe(el);
-  });
-
-  // Parallax hero image
-  window.addEventListener('scroll', () => {
-    const img = document.querySelector('.hero-img');
-    if (img) img.style.transform = `translateY(${window.scrollY * 0.3}px)`;
-  });
-</script>
-</body>
-</html>
